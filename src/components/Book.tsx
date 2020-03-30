@@ -1,8 +1,16 @@
 import React from "react";
 interface BookProps {
-    bookName: string;
+    item: any;
     key: number;
 }
-export const Book = ({bookName}: BookProps) => {
-    return <div>{bookName}</div>;
+export const Book = ({item}: BookProps) => {
+    const {title, authors} = item;
+    return (
+        <div>
+            {title}
+            {authors.map((author: string, index: number) => (
+                <p key={index}>{author}</p>
+            ))}
+        </div>
+    );
 };

@@ -1,0 +1,10 @@
+.header {
+    background-color: var(--sub-background-color);
+    color: var(--color);
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}

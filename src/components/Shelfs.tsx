@@ -13,17 +13,17 @@ export const Shelfs = ({books}: ShelfsProps) => {
 
     return (
         <div>
-            <p>Read</p>
+            <h2>Read</h2>
             {read.map((item: any, index) => (
-                <Book bookName={item.title} key={index}></Book>
+                <Book item={item} key={index}></Book>
             ))}
-            <p>currentlyReading</p>
+            <h2>currentlyReading</h2>
             {currentlyReading.map((item: any, index) => (
-                <Book bookName={item.title} key={index}></Book>
+                <Book item={item} key={index}></Book>
             ))}
-            <p>wantToRead</p>
+            <h2>wantToRead</h2>
             {wantToRead.map((item: any, index) => (
-                <Book bookName={item.title} key={index}></Book>
+                <Book item={item} key={index}></Book>
             ))}
         </div>
     );
