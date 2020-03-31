@@ -12,19 +12,25 @@ export const Shelfs = ({books}: ShelfsProps) => {
     console.log(read, currentlyReading, wantToRead);
 
     return (
-        <div>
+        <>
             <h2>Read</h2>
-            {read.map((item: any, index) => (
-                <Book item={item} key={index}></Book>
-            ))}
+            <div className="read">
+                {read.map((item: any, index) => (
+                    <Book item={item} key={index}></Book>
+                ))}
+            </div>
             <h2>currentlyReading</h2>
-            {currentlyReading.map((item: any, index) => (
-                <Book item={item} key={index}></Book>
-            ))}
+            <div className="currentlyReading">
+                {currentlyReading.map((item: any, index) => (
+                    <Book item={item} key={index}></Book>
+                ))}
+            </div>
             <h2>wantToRead</h2>
-            {wantToRead.map((item: any, index) => (
-                <Book item={item} key={index}></Book>
-            ))}
-        </div>
+            <div className="wantToRead">
+                {wantToRead.map((item: any, index) => (
+                    <Book item={item} key={index}></Book>
+                ))}
+            </div>
+        </>
     );
 };
