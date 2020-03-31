@@ -1,8 +1,10 @@
 .book {
-    background-color: aqua;
     padding: 20px;
     width: 300px;
-    height: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .book-thumbnail {
@@ -14,11 +16,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 300px
+    width: 300px;
 }
 
 .book-title {
     text-align: center;
 }
 
-.book-authors {}
+.book-authors {
+    text-align: center;
+}

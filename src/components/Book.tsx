@@ -8,15 +8,15 @@ export const Book = ({item}: BookProps) => {
     return (
         <div className="book">
             <div className="book-thumbnail-container">
-                <img src={imageLinks.smallThumbnail} className="book-thumbnail"></img>
+                <img src={imageLinks.smallThumbnail} className="book-thumbnail" alt="book thumbnail"></img>
             </div>
 
             <p className="book-title">{`${title} ${publishedDate}`}</p>
-            {/* <div className="book-authors">
+            <div className="book-authors">
                 {authors.map((author: string, index: number) => (
-                    <span key={index}>{author}</span>
+                    <p key={index}> {author}</p>
                 ))}
-            </div> */}
+            </div>
         </div>
     );
 };
