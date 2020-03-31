@@ -19,13 +19,13 @@ export const Shelfs = ({books}: ShelfsProps) => {
                     <Book item={item} key={index}></Book>
                 ))}
             </div>
-            <h2>currentlyReading</h2>
+            <h2>Currently Reading</h2>
             <div className="currentlyReading">
                 {currentlyReading.map((item: any, index) => (
                     <Book item={item} key={index}></Book>
                 ))}
             </div>
-            <h2>wantToRead</h2>
+            <h2>Want To Read</h2>
             <div className="wantToRead">
                 {wantToRead.map((item: any, index) => (
                     <Book item={item} key={index}></Book>
