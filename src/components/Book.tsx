@@ -2,9 +2,15 @@ import React from "react";
 interface BookProps {
     item: any;
     key: number;
+    handleShelfChange: Function;
 }
-export const Book = ({item}: BookProps) => {
-    const {title, authors, publishedDate, imageLinks} = item;
+export const Book = ({item, handleShelfChange}: BookProps) => {
+    const {title, authors, publishedDate, imageLinks, shelf} = item;
+    const handleChange = (e: any) => {
+        const newValue = e.target.value;
+        const objectToMove = title;
+        handleShelfChange(newValue, objectToMove);
+    };
     return (
         <div className="book">
             <div className="book-thumbnail-container">
@@ -18,7 +24,7 @@ export const Book = ({item}: BookProps) => {
                 ))}
             </div>
             <div className="book-selector">
-                <select>
+                <select value={shelf} onChange={handleChange}>
                     <option value="move" disabled>
                         Move to...
                     </option>

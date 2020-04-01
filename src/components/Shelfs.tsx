@@ -10,25 +10,27 @@ export const Shelfs = ({books}: ShelfsProps) => {
     const currentlyReading = books.filter((book: any) => book.shelf === "currentlyReading");
     const wantToRead = books.filter((book: any) => book.shelf === "wantToRead");
     console.log(read, currentlyReading, wantToRead);
-
+    const handleShelfChange = (newValue: string, objectToMove: string) => {
+        console.log(newValue, objectToMove);
+    };
     return (
         <>
             <h2>Read</h2>
             <div className="read">
                 {read.map((item: any, index) => (
-                    <Book item={item} key={index}></Book>
+                    <Book item={item} key={index} handleShelfChange={handleShelfChange}></Book>
                 ))}
             </div>
             <h2>Currently Reading</h2>
             <div className="currentlyReading">
                 {currentlyReading.map((item: any, index) => (
-                    <Book item={item} key={index}></Book>
+                    <Book item={item} key={index} handleShelfChange={handleShelfChange}></Book>
                 ))}
             </div>
             <h2>Want To Read</h2>
             <div className="wantToRead">
                 {wantToRead.map((item: any, index) => (
-                    <Book item={item} key={index}></Book>
+                    <Book item={item} key={index} handleShelfChange={handleShelfChange}></Book>
                 ))}
             </div>
         </>
