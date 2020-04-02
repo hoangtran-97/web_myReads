@@ -4,14 +4,23 @@ import {Book} from "./Book";
 
 interface ShelfsProps {
     books: object[];
+    setBooks: Function;
 }
-export const Shelfs = ({books}: ShelfsProps) => {
+export const Shelfs = ({books, setBooks}: ShelfsProps) => {
     const read = books.filter((book: any) => book.shelf === "read");
     const currentlyReading = books.filter((book: any) => book.shelf === "currentlyReading");
     const wantToRead = books.filter((book: any) => book.shelf === "wantToRead");
     console.log(read, currentlyReading, wantToRead);
     const handleShelfChange = (newValue: string, objectToMove: string) => {
-        console.log(newValue, objectToMove);
+        const newBooks = [...books];
+        const obj: any = newBooks.find((book: any) => book.title === objectToMove);
+        const index = newBooks.map((e: any) => e.title).indexOf(objectToMove);
+
+        if (obj) {
+            obj.shelf = newValue;
+            newBooks[index] = obj;
+            setBooks(newBooks);
+        }
     };
     return (
         <>

@@ -19,7 +19,7 @@ const App = () => {
     return (
         <div className="App">
             <Header></Header>
-            <Shelfs books={books}></Shelfs>
+            <Shelfs books={books} setBooks={setBooks}></Shelfs>
         </div>
     );
 };
