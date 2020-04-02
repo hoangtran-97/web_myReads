@@ -15,7 +15,6 @@ export const Shelfs = ({books, setBooks}: ShelfsProps) => {
         const newBooks = [...books];
         const obj: any = newBooks.find((book: any) => book.title === objectToMove);
         const index = newBooks.map((e: any) => e.title).indexOf(objectToMove);
-
         if (obj) {
             obj.shelf = newValue;
             newBooks[index] = obj;
