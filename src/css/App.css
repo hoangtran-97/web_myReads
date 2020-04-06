@@ -2,7 +2,8 @@
 @import "./Header.css";
 @import "./Book.css";
 @import "./Shelfs.css";
-:root {
+@import "./Search.css";
+:root  {
     --background-color: #000000;
     --sub-background-color: #424242;
     --color: #ffffff;
