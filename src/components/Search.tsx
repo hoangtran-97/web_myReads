@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Book} from "./Book";
 interface SearchProps {
     books: object[];
@@ -6,6 +6,8 @@ interface SearchProps {
 }
 export const Search = ({books, setBooks}: SearchProps) => {
     const [query, setQuery] = useState("");
+    const queryResult = books.filter((book: any) => book.title.toLowerCase().includes(query.toLowerCase()));
+    useEffect(() => {}, [query]);
     const handleShelfChange = (newValue: string, objectToMove: string) => {
         const newBooks = [...books];
         const obj: any = newBooks.find((book: any) => book.title === objectToMove);
@@ -25,7 +27,7 @@ export const Search = ({books, setBooks}: SearchProps) => {
                 onChange={(event) => setQuery(event.target.value)}
             ></input>
             <div className="search-result">
-                {books.map((item: any, index) => (
+                {queryResult.map((item: any, index) => (
                     <Book item={item} key={index} handleShelfChange={handleShelfChange}></Book>
                 ))}
             </div>
