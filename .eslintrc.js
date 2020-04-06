@@ -3,7 +3,7 @@ module.exports = {
     extends: "airbnb",
     parser: "babel-eslint",
     env: {
-        jest: true
+        jest: true,
     },
     rules: {
         "no-use-before-define": "off",
@@ -44,9 +44,9 @@ module.exports = {
         "no-unused-expressions": "off",
         quotes: [2, "single", {avoidEscape: true}],
         "no-unused-vars": [1, {vars: "all", args: "after-used", ignoreRestSiblings: false}],
-        "react/jsx-one-expression-per-line": "off"
+        "react/jsx-one-expression-per-line": "off",
     },
     globals: {
-        fetch: false
-    }
+        fetch: false,
+    },
 };

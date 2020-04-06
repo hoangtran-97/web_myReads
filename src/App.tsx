@@ -10,9 +10,7 @@ const App = () => {
     useEffect(() => {
         fetchData();
     }, []);
-    useEffect(() => {
-        console.log(books);
-    }, [books]);
+    useEffect(() => {}, [books]);
     const fetchData = async () => {
         const data = await BooksAPI.getAll();
         setBooks(data);
