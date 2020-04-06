@@ -20,9 +20,9 @@ const App = () => {
 
     return (
         <Router>
-            <Header></Header>
             <Switch>
                 <Route exact path="/">
+                    <Header></Header>
                     <Shelfs books={books} setBooks={setBooks}></Shelfs>
                 </Route>
                 <Route path="/search">

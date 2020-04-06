@@ -8,14 +8,3 @@
     align-items: center;
     padding: 20px;
 }
-
-.header-link {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-decoration: none;
-    color: var(--color);
-}
-
-.header-link:visited {
-    color: var(--color)
-}

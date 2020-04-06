@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {Book} from "./Book";
+import {FaAngleLeft, FaSearch} from "react-icons/fa";
+import {Link} from "react-router-dom";
 interface SearchProps {
     books: object[];
     setBooks: Function;
@@ -20,12 +22,24 @@ export const Search = ({books, setBooks}: SearchProps) => {
     };
     return (
         <>
-            <input
-                type="text"
-                placeholder="Search Book"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-            ></input>
+            <div className="search-header">
+                <Link to="/" className="nav-link">
+                    <FaAngleLeft className="icons"></FaAngleLeft>
+                </Link>
+                <div className="search-input-container">
+                    <input
+                        type="text"
+                        placeholder="Search Book"
+                        value={query}
+                        onChange={(event) => setQuery(event.target.value)}
+                        className="search-input"
+                    ></input>
+                    <FaSearch className="icons"></FaSearch>
+                </div>
+
+                <div></div>
+            </div>
+
             <div className="search-result">
                 {queryResult.map((item: any, index) => (
                     <Book item={item} key={index} handleShelfChange={handleShelfChange}></Book>

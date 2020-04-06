@@ -5,11 +5,9 @@ export const Header = () => {
     return (
         <div className="header">
             <div></div>
-            <Link to="/" className="header-link">
-                MyReads
-            </Link>
-            <Link to="/search" className="header-link">
-                <FaSearch></FaSearch>
+            <h1>MyReads</h1>
+            <Link to="/search" className="nav-link">
+                <FaSearch className="icons"></FaSearch>
             </Link>
         </div>
     );
