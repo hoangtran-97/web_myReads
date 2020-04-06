@@ -3,6 +3,8 @@ import "./css/App.css";
 import {Header} from "./components/Header";
 import * as BooksAPI from "./BooksAPI";
 import {Shelfs} from "./components/Shelfs";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {Search} from "./components/Search";
 const App = () => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
@@ -17,10 +19,17 @@ const App = () => {
     };
 
     return (
-        <div className="App">
+        <Router>
             <Header></Header>
-            <Shelfs books={books} setBooks={setBooks}></Shelfs>
-        </div>
+            <Switch>
+                <Route exact path="/">
+                    <Shelfs books={books} setBooks={setBooks}></Shelfs>
+                </Route>
+                <Route path="/search">
+                    <Search></Search>
+                </Route>
+            </Switch>
+        </Router>
     );
 };
 
