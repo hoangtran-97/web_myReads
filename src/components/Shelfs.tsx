@@ -1,7 +1,6 @@
 import React from "react";
-
 import {Book} from "./Book";
-
+import * as BooksAPI from "../BooksAPI";
 interface ShelfsProps {
     books: object[];
     setBooks: Function;
@@ -10,12 +9,13 @@ export const Shelfs = ({books, setBooks}: ShelfsProps) => {
     const read = books.filter((book: any) => book.shelf === "read");
     const currentlyReading = books.filter((book: any) => book.shelf === "currentlyReading");
     const wantToRead = books.filter((book: any) => book.shelf === "wantToRead");
-    const handleShelfChange = (newValue: string, objectToMove: string) => {
+    const handleShelfChange = async (newShelf: string, objectTitle: string, item: object) => {
+        BooksAPI.update(item, newShelf);
         const newBooks = [...books];
-        const obj: any = newBooks.find((book: any) => book.title === objectToMove);
-        const index = newBooks.map((e: any) => e.title).indexOf(objectToMove);
+        const obj: any = newBooks.find((book: any) => book.title === objectTitle);
+        const index = newBooks.map((e: any) => e.title).indexOf(objectTitle);
         if (obj) {
-            obj.shelf = newValue;
+            obj.shelf = newShelf;
             newBooks[index] = obj;
             setBooks(newBooks);
         }

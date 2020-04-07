@@ -7,9 +7,9 @@ interface BookProps {
 export const Book = ({item, handleShelfChange}: BookProps) => {
     const {title, authors, publishedDate, imageLinks, shelf} = item;
     const handleChange = (e: any) => {
-        const newValue = e.target.value;
-        const objectToMove = title;
-        handleShelfChange(newValue, objectToMove);
+        const newShelf = e.target.value;
+        const objectTitle = title;
+        handleShelfChange(newShelf, objectTitle, item);
     };
     return (
         <div className="book">
