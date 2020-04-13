@@ -46,9 +46,11 @@ export const Book = ({item, handleShelfChange}: BookProps) => {
     };
     return (
         <div className="book">
-            <div className="book-thumbnail-container">
-                <img src={imageLinks.smallThumbnail} className="book-thumbnail" alt="book thumbnail" />
-            </div>
+            {imageLinks && (
+                <div className="book-thumbnail-container">
+                    <img src={imageLinks.smallThumbnail} className="book-thumbnail" alt="book thumbnail" />
+                </div>
+            )}
             <p className="book-title">{title}</p>
             {authors && (
                 <div className="book-authors">

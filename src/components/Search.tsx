@@ -9,15 +9,16 @@ interface SearchProps {
     setBooks: Function;
 }
 export const Search = ({books, setBooks}: SearchProps) => {
+    const txt = new Array('tim', 'kim', 'jim');
     const [query, setQuery] = useState('');
-    const [searchResult, setSearchResult] = useState([]);
+    const [searchResult, setSearchResult] = useState(Array());
     // const queryResult = searchResult.filter((book: any) => book.title.toLowerCase().includes(query.toLowerCase()));
     useEffect(() => {
         fetchData();
     }, [query]);
     const fetchData = async () => {
         const data = await BooksAPI.search(query);
-        data !== undefined && setSearchResult(data);
+        Array.isArray(data) ? setSearchResult(data) : setSearchResult(Array());
         console.log('search result', searchResult);
         console.log(typeof searchResult);
     };
@@ -44,8 +45,8 @@ export const Search = ({books, setBooks}: SearchProps) => {
 
                 <div />
             </div>
-            {/* <div className="search-result">
-                {searchResult ? (
+            <div className="search-result">
+                {searchResult.length >= 1 ? (
                     <div style={{color: 'white'}}>
                         {searchResult.map((item: any, index) => (
                             <Book item={item} key={index} handleShelfChange={handleShelfChange} />
@@ -54,7 +55,7 @@ export const Search = ({books, setBooks}: SearchProps) => {
                 ) : (
                     <div style={{color: 'white'}}>No Result</div>
                 )}
-            </div> */}
+            </div>
         </>
     );
 };
