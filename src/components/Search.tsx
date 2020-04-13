@@ -9,7 +9,6 @@ interface SearchProps {
     setBooks: Function;
 }
 export const Search = ({books, setBooks}: SearchProps) => {
-    const txt = new Array('tim', 'kim', 'jim');
     const [query, setQuery] = useState('');
     const [searchResult, setSearchResult] = useState(Array());
     // const queryResult = searchResult.filter((book: any) => book.title.toLowerCase().includes(query.toLowerCase()));
@@ -22,12 +21,13 @@ export const Search = ({books, setBooks}: SearchProps) => {
         console.log('search result', searchResult);
         console.log(typeof searchResult);
     };
-    const handleShelfChange = (newValue: string, objectToMove: string, item: object) => {
+    const handleShelfChange = async (newShelf: string, objectTitle: string, item: object) => {
+        BooksAPI.update(item, newShelf);
         const newBooks = [...books];
-        const obj: any = newBooks.find((book: any) => book.title === objectToMove);
-        const index = newBooks.map((e: any) => e.title).indexOf(objectToMove);
+        const obj: any = newBooks.find((book: any) => book.title === objectTitle);
+        const index = newBooks.map((e: any) => e.title).indexOf(objectTitle);
         if (obj) {
-            obj.shelf = newValue;
+            obj.shelf = newShelf;
             newBooks[index] = obj;
             setBooks(newBooks);
         }
