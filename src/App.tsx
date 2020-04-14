@@ -11,13 +11,13 @@ import {Search} from './components/Search';
 const App = () => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
+        const fetchData = async () => {
+            const data = await BooksAPI.getAll();
+            setBooks(data);
+        };
         fetchData();
-    });
+    }, []);
     // useEffect(() => {}, [books]);
-    const fetchData = async () => {
-        const data = await BooksAPI.getAll();
-        setBooks(data);
-    };
 
     return (
         <Router>
