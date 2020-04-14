@@ -10,13 +10,16 @@ interface SearchProps {
 }
 export const Search = ({books, setBooks}: SearchProps) => {
     const [query, setQuery] = useState('');
+    // eslint-disable-next-line
     const [searchResult, setSearchResult] = useState(Array());
-    // const queryResult = searchResult.filter((book: any) => book.title.toLowerCase().includes(query.toLowerCase()));
+    /* eslint-disable */
     useEffect(() => {
         fetchData();
     }, [query]);
+    /* eslint-enable */
     const fetchData = async () => {
         const data = await BooksAPI.search(query);
+        // eslint-disable-next-line
         Array.isArray(data) ? setSearchResult(data) : setSearchResult(Array());
         console.log('search result', searchResult);
         console.log(typeof searchResult);
