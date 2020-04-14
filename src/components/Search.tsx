@@ -21,18 +21,19 @@ export const Search = ({books, setBooks}: SearchProps) => {
         const data = await BooksAPI.search(query);
         // eslint-disable-next-line
         Array.isArray(data) ? setSearchResult(data) : setSearchResult(Array());
-        console.log('search result', searchResult);
-        console.log(typeof searchResult);
     };
     const handleShelfChange = async (newShelf: string, objectTitle: string, item: object) => {
         BooksAPI.update(item, newShelf);
         const newBooks = [...books];
+        console.log('newBooks', newBooks);
         const obj: any = newBooks.find((book: any) => book.title === objectTitle);
+        console.log('obj', obj);
         const index = newBooks.map((e: any) => e.title).indexOf(objectTitle);
         if (obj) {
             obj.shelf = newShelf;
             newBooks[index] = obj;
             setBooks(newBooks);
+            console.log('new', obj);
         }
     };
     return (
@@ -50,11 +51,7 @@ export const Search = ({books, setBooks}: SearchProps) => {
             </div>
             <div className="search-result">
                 {searchResult.length >= 1 ? (
-                    <div style={{color: 'white'}}>
-                        {searchResult.map((item: any, index) => (
-                            <Book item={item} key={index} handleShelfChange={handleShelfChange} />
-                        ))}
-                    </div>
+                    searchResult.map((item: any, index) => <Book item={item} key={index} handleShelfChange={handleShelfChange} />)
                 ) : (
                     <div style={{color: 'white'}}>No Result</div>
                 )}

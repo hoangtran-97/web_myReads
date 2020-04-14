@@ -3,11 +3,13 @@
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
+
 .search-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .search-input {
     background-color: var(--sub-background-color);
     height: 30px;
@@ -17,12 +19,14 @@
     border-radius: 5px;
     margin-right: 10px;
 }
+
 .search-input-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px;
 }
+
 @media (min-width: 900px) {
     .search-input {
         width: 300px;

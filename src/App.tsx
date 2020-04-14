@@ -1,16 +1,19 @@
-import React, {useEffect, useState} from "react";
-import "./css/App.css";
-import {Header} from "./components/Header";
-import * as BooksAPI from "./BooksAPI";
-import {Shelfs} from "./components/Shelfs";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import {Search} from "./components/Search";
+import React, {useEffect, useState} from 'react';
+import './css/App.css';
+import {
+    BrowserRouter as Router, Switch, Route, withRouter
+} from 'react-router-dom';
+import {Header} from './components/Header';
+import * as BooksAPI from './BooksAPI';
+import {Shelfs} from './components/Shelfs';
+import {Search} from './components/Search';
+
 const App = () => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
         fetchData();
-    }, []);
-    useEffect(() => {}, [books]);
+    });
+    // useEffect(() => {}, [books]);
     const fetchData = async () => {
         const data = await BooksAPI.getAll();
         setBooks(data);
@@ -20,15 +23,15 @@ const App = () => {
         <Router>
             <Switch>
                 <Route exact path="/">
-                    <Header></Header>
-                    <Shelfs books={books} setBooks={setBooks}></Shelfs>
+                    <Header />
+                    <Shelfs books={books} setBooks={setBooks} />
                 </Route>
                 <Route path="/search">
-                    <Search books={books} setBooks={setBooks}></Search>
+                    <Search books={books} setBooks={setBooks} />
                 </Route>
             </Switch>
         </Router>
     );
 };
 
-export default App;
+export default withRouter(App);
