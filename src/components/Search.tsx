@@ -20,14 +20,26 @@ export const Search = ({books, setBooks}: SearchProps) => {
     const fetchData = async () => {
         const data = await BooksAPI.search(query);
         // eslint-disable-next-line
-        Array.isArray(data) ? setSearchResult(data) : setSearchResult(Array());
+        Array.isArray(data) ? newResult(data) : setSearchResult(Array());
+    };
+    const newResult = (data: any) => {
+        const filteredShelf = books.filter((book: any) => book.title.toLowerCase().includes(query.toLowerCase()));
+        let filteredQuery = data;
+        if (filteredShelf.length >= 1) {
+            filteredQuery = data.filter((item: any) => !item.title.toLowerCase().includes(query.toLowerCase()));
+            console.log('data', data);
+            console.log('shelf', filteredShelf);
+
+            console.log('filtered', filteredQuery);
+        }
+        const combinedResult = [...filteredShelf, ...filteredQuery];
+        setSearchResult(combinedResult);
+        console.log(combinedResult);
     };
     const handleShelfChange = async (newShelf: string, objectTitle: string, item: object) => {
         BooksAPI.update(item, newShelf);
         const newBooks = [...books];
-        console.log('newBooks', newBooks);
         const obj: any = newBooks.find((book: any) => book.title === objectTitle);
-        console.log('obj', obj);
         const index = newBooks.map((e: any) => e.title).indexOf(objectTitle);
         if (obj) {
             obj.shelf = newShelf;
