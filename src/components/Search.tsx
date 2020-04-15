@@ -27,10 +27,6 @@ export const Search = ({books, setBooks}: SearchProps) => {
         let filteredQuery = data;
         if (filteredShelf.length >= 1) {
             filteredQuery = data.filter((item: any) => !item.title.toLowerCase().includes(query.toLowerCase()));
-            console.log('data', data);
-            console.log('shelf', filteredShelf);
-
-            console.log('filtered', filteredQuery);
         }
         const combinedResult = [...filteredShelf, ...filteredQuery];
         setSearchResult(combinedResult);
